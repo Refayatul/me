@@ -292,18 +292,6 @@ section:nth-child(even) {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
-.about-image::before {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    right: -20px;
-    bottom: -20px;
-    border: 2px solid var(--primary-color);
-    border-radius: 20px;
-    z-index: -1;
-}
-
 /* Skills Section */
 .skills-container {
     display: grid;
