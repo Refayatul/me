@@ -7,536 +7,447 @@
     <meta name="keywords" content="Refayatul Islam, Web Developer, Flutter Developer, BUP CSE, Portfolio, Bangladesh">
     <meta name="author" content="Md Refayatul Islam">
     
-    <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="Md Refayatul Islam - Portfolio">
     <meta property="og:description" content="Student Developer specializing in Web Development, Flutter Apps, and Hardware Projects">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://refayatul.pages.dev">
     
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://refayatul.pages.dev">
     
     <title>Md Refayatul Islam - Portfolio</title>
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://img.icons8.com/fluency/48/resume.png" type="image/png"> <!-- Generic Favicon -->
 </head>
 <body>
-    <!-- Progress Bar -->
     <div class="progress-bar"></div>
 
-    <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-brand">Refayatul Islam</div>
-        <div class="nav-toggle" id="navToggle">
+        <a href="#home" class="nav-brand">Refayatul Islam</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
             <span></span><span></span><span></span>
-        </div>
+        </button>
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#education" class="nav-link">Education</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li>
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </li>
         </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Hi, I'm <span class="highlight">Md Refayatul Islam</span></h1>
-            <p class="typewriter" id="typewriter">Student | Web Developer | Flutter Developer | Hardware Enthusiast | Volunteer</p>
-            <div class="location-info">
-                <i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh
-                <i class="fas fa-phone ms-3"></i> +88015189413xx
-                <i class="fas fa-envelope ms-3"></i> refayatul@outlook.com
-            </div>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn primary">
-                    <i class="fas fa-envelope"></i> Contact Me
-                </a>
-                <!-- <a href="#" class="btn secondary">
-                    <i class="fas fa-download"></i> Download CV
-                </a> -->
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-            <p>Scroll down</p>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <div class="about-image">
-                <img src="./assets/Rifat.jpg" alt="Md Refayatul Islam" loading="lazy">
-            </div>
-            <div class="about-text">
-                <div class="profile-summary">
-                    <h3>Profile Summary</h3>
-                    <p>Motivated and enthusiastic Computer Science & Engineering student at BUP with hands-on experience in full-stack web development, mobile app development (Flutter), hardware prototyping, and content creation. Proven ability to manage projects independently, contribute to open-source initiatives, and actively engage in community volunteering. Seeking opportunities to apply and expand technical skills in a challenging environment.</p>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="aos-item"><h1>Hi, I'm <span class="highlight">Md Refayatul Islam</span></h1></div>
+                <div class="aos-item">
+                    <p class="typewriter" id="typewriter" data-phrases='["Student Developer", "Full-Stack Enthusiast", "Flutter Developer", "Creative Problem Solver"]'>
+                        Your Future Innovator
+                    </p>
                 </div>
-                <div class="personal-info">
-                    <h3>Personal Information</h3>
-                    <ul>
-                        <li><i class="fas fa-calendar"></i> Birth Year: 2002</li>
-                        <li><i class="fas fa-phone"></i> +8801518941350</li>
-                        <li><i class="fas fa-envelope"></i> refayatul@outlook.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> 12/C Pallabi, Dhaka 1216, Bangladesh</li>
-                    </ul>
+                <div class="location-info aos-item">
+                    <span><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</span>
+                    <a href="tel:+8801518941350"><i class="fas fa-phone"></i> +8801518941350</a>
+                    <a href="mailto:refayatul@outlook.com"><i class="fas fa-envelope"></i> refayatul@outlook.com</a>
                 </div>
-                <div class="social-links">
-                    <a href="https://github.com/refayatul" target="_blank" class="social-link">
-                        <i class="fab fa-github"></i> GitHub
+                <div class="cta-buttons aos-item">
+                    <a href="#projects" class="btn primary">
+                        <i class="fas fa-briefcase"></i> View Projects
                     </a>
-                    <a href="https://www.linkedin.com/in/refayatul7" target="_blank" class="social-link">
-                        <i class="fab fa-linkedin"></i> LinkedIn
+                    <a href="#contact" class="btn secondary">
+                        <i class="fas fa-paper-plane"></i> Get in Touch
                     </a>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="scroll-indicator">
+                <div class="mouse"></div>
+                <p>Scroll</p>
+            </div>
+        </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <h2>Skills</h2>
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3>Programming</h3>
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <i class="fas fa-code"></i>
-                        <span>C++</span>
+        <section id="about" class="about">
+            <h2 class="aos-item">About Me</h2>
+            <div class="section-content-wrapper">
+                <div class="about-content">
+                    <div class="about-image aos-item">
+                        <!-- Replace with your actual photo or a professional generic one -->
+                        <img src="./assets/Rifat.jpg" alt="Md Refayatul Islam" loading="lazy">
                     </div>
-                    <div class="skill-item">
-                        <i class="fas fa-code"></i>
-                        <span>C</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fab fa-python"></i>
-                        <span>Python</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fab fa-java"></i>
-                        <span>Java</span>
+                    <div class="about-text aos-item">
+                        <div class="profile-summary">
+                            <h3>Overview</h3>
+                            <p>Motivated and enthusiastic Computer Science & Engineering student at Bangladesh University of Professionals (BUP) with hands-on experience in full-stack web development and mobile app development using Flutter. Proven ability to manage projects independently, contribute to open-source initiatives, and actively engage in community volunteering. Seeking opportunities to apply and expand technical skills in a challenging environment.</p>
+                        </div>
+                        <div class="languages-info">
+                            <h3>Languages</h3>
+                            <ul>
+                                <li><i class="fas fa-language"></i> Bangla, English: Fluent</li>
+                                <li><i class="fas fa-language"></i> Hindi: Speaking and listening</li>
+                                <li><i class="fas fa-language"></i> French: Basic</li>
+                            </ul>
+                        </div>
+                        <div class="social-links-about">
+                            <a href="https://github.com/refayatul" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/in/refayatul7" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                             <a href="https://refayatul.pages.dev" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <i class="fas fa-globe"></i> Portfolio
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="skill-category">
-                <h3>Frontend Development</h3>
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <i class="fab fa-html5"></i>
-                        <span>HTML5</span>
+        </section>
+
+        <section id="skills" class="skills">
+            <h2 class="aos-item">My Skillset</h2>
+            <div class="section-content-wrapper">
+                <div class="skills-container">
+                    <div class="skill-category aos-item">
+                        <h3>Development & Programming</h3>
+                        <div class="skill-items">
+                            <span class="skill-item"><i class="fas fa-code"></i>C++</span>
+                            <span class="skill-item"><i class="fas fa-code"></i>C</span>
+                            <span class="skill-item"><i class="fab fa-python"></i>Python</span>
+                            <span class="skill-item"><i class="fab fa-java"></i>Java</span>
+                            <span class="skill-item"><i class="fab fa-html5"></i>HTML5</span>
+                            <span class="skill-item"><i class="fab fa-css3-alt"></i>CSS3</span>
+                            <span class="skill-item"><i class="fab fa-js"></i>JavaScript</span>
+                            <span class="skill-item"><i class="fas fa-terminal"></i>Bash Scripting</span>
+                            <span class="skill-item"><i class="fas fa-database"></i>Firebase</span>
+                            <span class="skill-item"><i class="fas fa-database"></i>MySQL</span>
+                            <span class="skill-item"><i class="fas fa-mobile-alt"></i>Flutter/Dart</span>
+                            <span class="skill-item"><i class="fab fa-android"></i>Android Studio</span>
+                        </div>
                     </div>
-                    <div class="skill-item">
-                        <i class="fab fa-css3-alt"></i>
-                        <span>CSS3</span>
+                    <div class="skill-category aos-item">
+                        <h3>Tools & Systems</h3>
+                        <div class="skill-items">
+                            <span class="skill-item"><i class="fab fa-git-alt"></i>Git/GitHub</span>
+                            <span class="skill-item"><i class="fab fa-linux"></i>Linux (since 2021)</span>
+                            <span class="skill-item"><i class="fas fa-terminal"></i>Terminal</span>
+                            <span class="skill-item">VSCode</span>
+                            <span class="skill-item">AutoCAD</span>
+                            <span class="skill-item">Cisco Packet Tracer</span>
+                            <span class="skill-item">Proteus</span>
+                            <span class="skill-item">XAMPP</span>
+                            <span class="skill-item">MS Office Suite</span>
+                        </div>
                     </div>
-                    <div class="skill-item">
-                        <i class="fab fa-js"></i>
-                        <span>JavaScript</span>
+                     <div class="skill-category aos-item">
+                        <h3>Soft Skills</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">Teamwork</span>
+                            <span class="skill-item">Adaptability</span>
+                            <span class="skill-item">Active Listening</span>
+                            <span class="skill-item">Problem Solving</span>
+                            <span class="skill-item">Project Management</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="skill-category">
-                <h3>Backend & Database</h3>
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <i class="fas fa-terminal"></i>
-                        <span>Bash Scripting</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fas fa-database"></i>
-                        <span>Firebase</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fas fa-database"></i>
-                        <span>MySQL</span>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3>Mobile Development</h3>
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <i class="fas fa-mobile-alt"></i>
-                        <span>Flutter/Dart</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fab fa-android"></i>
-                        <span>Android</span>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3>Tools & Systems</h3>
-                <div class="skill-items">
-                    <div class="skill-item expert">
-                        <i class="fab fa-git-alt"></i>
-                        <span>Git</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fab fa-linux"></i>
-                        <span>Linux (Since 2021)</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fas fa-terminal"></i>
-                        <span>Command Line</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <h2>Projects</h2>
-        <div class="projects-filter">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="hardware">Hardware</button>
-            <button class="filter-btn" data-filter="web">Web</button>
-            <button class="filter-btn" data-filter="mobile">Mobile</button>
-            <button class="filter-btn" data-filter="opensource">Open Source</button>
-        </div>
-        <div class="projects-grid">
-            <!-- Hardware Project -->
-            <div class="project-card" data-category="hardware">
-                <div class="project-image">
-                    <img src="placeholder-project.jpg" alt="IoT Visitor Counter" loading="lazy">
+        <section id="projects" class="projects">
+            <h2 class="aos-item">Featured Projects</h2>
+            <div class="section-content-wrapper">
+                <div class="projects-filter aos-item">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn" data-filter="mobile">Mobile</button>
+                    <button class="filter-btn" data-filter="hardware">Hardware</button>
+                    <button class="filter-btn" data-filter="opensource">Open Source</button>
                 </div>
-                <div class="project-info">
-                    <h3>IoT-Based Visitor Counter & Room Automation</h3>
-                    <p>A smart system for counting people and controlling room lighting based on occupancy using IR sensors and Arduino.</p>
-                    <div class="project-tech">
-                        <span>Arduino</span>
-                        <span>C++</span>
-                        <span>IR Sensors</span>
-                        <span>Circuit Design</span>
+                <div class="projects-grid">
+                    <!-- Project Card Example with Unsplash Placeholder -->
+                    <div class="project-card aos-item" data-category="web">
+                        <div class="project-image"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="Personal Portfolio Website" loading="lazy"></div>
+                        <div class="project-info">
+                            <h3>Personal Portfolio Website</h3>
+                            <p>Interactive personal portfolio showcasing skills, projects, and experience using modern web technologies.</p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                            <div class="project-links">
+                                <a href="https://refayatul.pages.dev/" class="btn primary" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Live Site</a>
+                                <a href="https://github.com/Refayatul/portfolio/" class="btn secondary" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="project-links">
-                        <a href="#" class="btn" target="_blank">
-                            <i class="fas fa-file-alt"></i> Documentation
-                        </a>
-                        <a href="#" class="btn" target="_blank">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
+                    <div class="project-card aos-item" data-category="web">
+                        <div class="project-image"><img src="https://images.unsplash.com/photo-1605648916383-39415583d019?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="Palestine Lives" loading="lazy"></div>
+                        <div class="project-info">
+                            <h3>Palestine Lives</h3>
+                            <p>A web platform dedicated to documenting Palestine's history, culture, and current events with interactive maps and timelines.</p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Git</span></div>
+                            <div class="project-links">
+                                <a href="https://palestinelives.pages.dev" class="btn primary" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Live Site</a>
+                                <a href="https://github.com/refayatul/palestinelives" class="btn secondary" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Web Project - Palestine Lives -->
-            <div class="project-card" data-category="web">
-                <div class="project-image">
-                    <img src="placeholder-project.jpg" alt="Palestine Lives" loading="lazy">
-                </div>
-                <div class="project-info">
-                    <h3>Palestine Lives</h3>
-                    <p>A website dedicated to documenting the history and ongoing struggle of the Palestinian people.</p>
-                    <div class="project-tech">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>Git</span>
+                    <div class="project-card aos-item" data-category="web">
+                        <div class="project-image"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="BUP CSE Department Website" loading="lazy"></div>
+                        <div class="project-info">
+                            <h3>BUP CSE Department Website</h3>
+                            <p>Maintained and contributed to the official department site, focusing on academic updates & resource sharing for students.</p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Git</span></div>
+                            <div class="project-links">
+                                <a href="https://bupcse.pages.dev/" class="btn primary" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Live Site</a>
+                                <a href="https://github.com/Refayatul/bupcse" class="btn secondary" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="project-links">
-                        <a href="https://palestinelives.pages.dev" class="btn" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> Live Site
-                        </a>
-                        <a href="https://github.com/refayatul/palestinelives" class="btn" target="_blank">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
+                    <div class="project-card aos-item" data-category="mobile">
+                        <div class="project-image"><img src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="Hikma App" loading="lazy"></div>
+                        <div class="project-info">
+                            <h3>Hikma App (Learn Islam)</h3>
+                            <p>A Flutter-based Android application designed to teach Islamic knowledge, practices, and provide prayer utility features.</p>
+                            <div class="project-tech"><span>Flutter</span><span>Dart</span><span>Android Studio</span><span>Git</span></div>
+                            <div class="project-links">
+                                <a href="https://github.com/Refayatul/hikma" class="btn secondary" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="project-card aos-item" data-category="web" data-aos-delay="300">
+                        <div class="project-image"><img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="Landlister" loading="lazy"></div>
+                        <div class="project-info">
+                            <h3>Landlister</h3>
+                            <p>A web application to connect land buyers and sellers directly, streamlining the property transaction process.</p>
+                            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span></div>
+                            <div class="project-links">
+                                <a href="https://github.com/Refayatul/landlister" class="btn secondary" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card aos-item" data-category="hardware">
+                        <div class="project-image"><img src="https://images.unsplash.com/photo-1518495964804-149308501492?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="Automatic Solar Tracking System" loading="lazy"></div>
+                        <div class="project-info">
+                            <h3>Automatic Solar Tracking System</h3>
+                            <p>An Arduino-based system using LDR sensors and servo motors to automatically orient a solar panel towards the sun for maximum efficiency.</p>
+                            <div class="project-tech"><span>Arduino</span><span>C++</span><span>Sensors</span><span>Servo Motors</span></div>
+                            <div class="project-links">
+                                <a href="https://github.com/Refayatul/solartracker" class="btn secondary" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card aos-item" data-category="hardware">
+                        <div class="project-image"><img src="https://images.unsplash.com/photo-1581091226804-8082808336dd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="IoT Visitor Counter & Automation" loading="lazy"></div>
+                        <div class="project-info">
+                            <h3>IoT Visitor Counter & Room Automation</h3>
+                            <p>Smart occupancy-based lighting control and visitor counting system using Arduino and IR sensors for energy efficiency.</p>
+                            <div class="project-tech"><span>Arduino</span><span>C++</span><span>IR Sensors</span></div>
+                            <div class="project-links">
+                                <a href="https://github.com/Refayatul/visitorCounter" class="btn secondary" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card aos-item" data-category="opensource">
+                        <div class="project-image"><img src="https://images.unsplash.com/photo-1526666923127-b2970f64b422?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60" alt="CNCF Glossary Contribution" loading="lazy"></div>
+                        <div class="project-info">
+                            <h3>CNCF Glossary - Bangla Localization</h3>
+                            <p>Contributed to the Cloud Native Computing Foundation (CNCF) by translating key glossary terms into the Bangla language.</p>
+                            <div class="project-tech"><span>Markdown</span><span>Git</span><span>GitHub</span><span>Localization</span></div>
+                            <div class="project-links">
+                                <a href="https://github.com/cncf/glossary/issues/410" class="btn primary" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Contribution</a>
+                                <a href="https://github.com/cncf/glossary" class="btn secondary" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Project Repo</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Web Project - BUP CSE -->
-            <div class="project-card" data-category="web">
-                <div class="project-image">
-                    <img src="placeholder-project.jpg" alt="BUP CSE Website" loading="lazy">
-                </div>
-                <div class="project-info">
-                    <h3>BUP CSE Department Website</h3>
-                    <p>Official website for the Computer Science & Engineering department of Bangladesh University of Professionals.</p>
-                    <div class="project-tech">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>Git</span>
+        <section id="experience" class="experience">
+            <h2 class="aos-item">Professional Journey</h2>
+            <div class="section-content-wrapper">
+                <div class="timeline">
+                    <!-- Experience items will be animated by JS targeting .timeline-item.aos-item -->
+                    <div class="timeline-item aos-item">
+                        <div class="timeline-content">
+                            <h3>Joint Secretary (Software Development Department)</h3>
+                            <h4>BUP infoTech Club, Dhaka</h4>
+                            <p class="date">Apr 2022 – Present</p>
+                            <ul>
+                                <li>Organized programming competitions and workshops, fostering a collaborative learning environment.</li>
+                                <li>Taught fundamental and advanced programming concepts to club members, enhancing their technical skills.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="project-links">
-                        <a href="https://bupcse.pages.dev" class="btn" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> Live Site
-                        </a>
-                        <a href="https://github.com/refayatul/bupcse" class="btn" target="_blank">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
+                    <div class="timeline-item aos-item">
+                        <div class="timeline-content">
+                            <h3>Web & Software Developer</h3>
+                            <h4>BUP Computer Programming Club, Dhaka</h4>
+                            <p class="date">Apr 2023 – Present</p>
+                            <ul>
+                                <li>Developed and maintained the CSE batch website for efficient resource sharing & communication.</li>
+                                <li>Played a key role in organizing coding contests and mentoring junior members.</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Mobile Project -->
-            <div class="project-card" data-category="mobile">
-                <div class="project-image">
-                    <img src="placeholder-project.jpg" alt="Salah App" loading="lazy">
-                </div>
-                <div class="project-info">
-                    <h3>Salah App</h3>
-                    <p>An Android application to teach basic knowledge and practices of Islam (Salah).</p>
-                    <div class="project-tech">
-                        <span>Flutter</span>
-                        <span>Dart</span>
-                        <span>Android Studio</span>
-                        <span>Git</span>
+                    <div class="timeline-item aos-item">
+                        <div class="timeline-content">
+                            <h3>Lead Developer & Maintainer</h3>
+                            <h4>Palestine Lives <a href="https://palestinelives.pages.dev" target="_blank" rel="noopener noreferrer" class="site-link">(Visit Site)</a></h4>
+                            <p class="date">Jan 2024 – Present</p>
+                            <ul>
+                                <li>Led the design and development of a responsive website focused on Palestine's history and current events.</li>
+                                <li>Ensured high performance, accessibility, and regular content updates for the platform.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="project-links">
-                        <a href="#" class="btn" target="_blank">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
+                     <div class="timeline-item aos-item">
+                        <div class="timeline-content">
+                            <h3>Web Developer</h3>
+                            <h4>BUP CSE Department Website <a href="https://bupcse.pages.dev" target="_blank" rel="noopener noreferrer" class="site-link">(Visit Site)</a></h4>
+                            <p class="date">Mar 2023 – Present</p>
+                            <ul>
+                                <li>Contributed to the maintenance and feature enhancement of the official department website.</li>
+                                <li>Implemented tools for academic updates, resource sharing, and event notifications.</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Web Project -->
-            <div class="project-card" data-category="web">
-                <div class="project-image">
-                    <img src="placeholder-project.jpg" alt="Landlister" loading="lazy">
-                </div>
-                <div class="project-info">
-                    <h3>Landlister</h3>
-                    <p>A web application connecting land buyers and sellers directly, eliminating intermediaries.</p>
-                    <div class="project-tech">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>PHP</span>
-                        <span>MySQL</span>
+                     <div class="timeline-item aos-item">
+                        <div class="timeline-content">
+                            <h3>Lead Editor & Web Developer</h3>
+                            <h4><a href="https://thebulletinbitz.com" target="_blank" rel="noopener noreferrer" class="site-link">BulletinBitz</a></h4>
+                            <p class="date">Nov 2022 – Present</p>
+                            <ul>
+                                <li>Managed tech-focused editorial content, including writing, editing, and publishing articles.</li>
+                                <li>Responsible for website maintenance, SEO optimization, and user engagement strategies.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="project-links">
-                        <a href="#" class="btn" target="_blank">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
+                     <div class="timeline-item aos-item" >
+                        <div class="timeline-content">
+                            <h3>Open Source Contributor</h3>
+                            <h4><a href="https://github.com/cncf/glossary" target="_blank" rel="noopener noreferrer" class="site-link">CNCF Glossary</a> <a href="https://github.com/cncf/glossary/issues/410" target="_blank" rel="noopener noreferrer" class="site-link">(Bangla Localization)</a></h4>
+                            <p class="date">May 2023 – Present</p>
+                            <ul>
+                                <li>Translated key Cloud Native Computing Foundation (CNCF) glossary terms into Bangla, improving accessibility for local developers.</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Open Source Project -->
-            <div class="project-card" data-category="opensource">
-                <div class="project-image">
-                    <img src="placeholder-project.jpg" alt="CNCF Cloud Native Glossary" loading="lazy">
-                </div>
-                <div class="project-info">
-                    <h3>CNCF Cloud Native Glossary</h3>
-                    <p>Contributed at translating definitions and clarifications to the Cloud Native Computing Foundation's glossary project to Bangla.</p>
-                    <div class="project-tech">
-                        <span>Markdown</span>
-                        <span>Git</span>
-                        <span>GitHub</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn" target="_blank">
-                            <i class="fab fa-github"></i> Contribution
-                        </a>
+                    <div class="timeline-item aos-item">
+                        <div class="timeline-content">
+                            <h3>Mobile App Developer</h3>
+                            <h4>Hikma (Learn Islam) <a href="https://github.com/Refayatul/hikma" target="_blank" rel="noopener noreferrer" class="site-link">(Visit Repo)</a></h4>
+                            <p class="date">Feb 2024 – Present</p>
+                            <ul>
+                                <li>Leading the development of a Flutter-based Android application for teaching Islamic practices and knowledge.</li>
+                                <li>Focusing on user-friendly UI/UX and robust feature implementation.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <h2>Experience</h2>
-        <div class="timeline">
-            <!-- BUP Computer Programming Club - Software Development -->
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3> Web And Software Developer (Software Development Department)</h3>
-                    <h4>BUP Computer Programming Club</h4>
-                    <p class="date">April 2023 – Present</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Mirpur Cantonment, Dhaka</p>
-                    <ul>
-                        <li>Developed a website for the CSE batch to enhance communication and resource sharing among members</li>
-                        <li>Organized programming competitions for club members to foster engagement and skill development</li>
-                        <li>Taught various programming concepts to members, facilitating their understanding and application of coding techniques</li>
-
-                    </ul>
+                <h3 class="volunteer-heading aos-item">Volunteer Experience</h3>
+                <div class="volunteer-grid">
+                    <div class="volunteer-item aos-item">
+                        <h4>Munshigonj Blood Donation</h4>
+                        <p class="date">2019 – Present</p>
+                        <p>Actively organizing blood donation camps and awareness campaigns to support local healthcare needs.</p>
+                    </div>
+                    <div class="volunteer-item aos-item">
+                        <h4>Student Welfare & Social Development Association</h4>
+                        <p class="date">2021 – Present</p>
+                        <p>Collaborating on various student welfare projects and social development initiatives in Munshigonj.</p>
+                    </div>
+                    <div class="volunteer-item aos-item">
+                        <h4>Poriborton (Social Needs Support)</h4>
+                        <p class="date">2022 – Present</p>
+                        <p>Assisting with community outreach programs and the logistical distribution of aid to underprivileged communities.</p>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Palestine Lives Project -->
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>Lead Developer & Maintainer</h3>
-                    <h4>Palestine Lives Website</h4>
-                    <p class="date">2024 – Present</p>
-                    <ul>
-                        <li>Developed and maintaining a comprehensive website documenting Palestinian history and current events</li>
-                        <li>Implemented responsive design and intuitive user interface for better accessibility</li>
-                        <li>Live site: <a href="https://palestinelives.pages.dev/" target="_blank">palestinelives.pages.dev</a></li>
-                    </ul>
+        <section id="education" class="education">
+            <h2 class="aos-item">Academic Background</h2>
+            <div class="section-content-wrapper">
+                <div class="education-grid">
+                    <div class="education-item aos-item">
+                        <h3>B.Sc. in Computer Science & Engineering</h3>
+                        <div class="institution">Bangladesh University of Professionals (BUP)</div>
+                        <div class="year">2022 - Present</div>
+                        <div class="location"><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</div>
+                        <!-- <div class="details">CGPA: 3.xx/4.00</div> -->
+                    </div>
+                    <div class="education-item aos-item">
+                        <h3>Higher Secondary Certificate (HSC)</h3>
+                        <div class="institution">Chuadanga Government College</div>
+                        <div class="year">2019 - 2021</div>
+                        <div class="location"><i class="fas fa-map-marker-alt"></i> Chuadanga, Bangladesh</div>
+                        <!-- <div class="details">GPA: 5.00/5.00</div> -->
+                    </div>
+                    <div class="education-item aos-item">
+                        <h3>Secondary School Certificate (SSC)</h3>
+                        <div class="institution">Victoria Jubilee Government High School</div>
+                        <div class="year">2013 - 2018</div>
+                        <div class="location"><i class="fas fa-map-marker-alt"></i> Chuadanga, Bangladesh</div>
+                        <!-- <div class="details">GPA: 5.00/5.00</div> -->
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- BUP CSE Website -->
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>Web Developer</h3>
-                    <h4>BUP CSE Department Website</h4>
-                    <p class="date">2023 – Present</p>
-                    <ul>
-                        <li>Developing and maintaining the official website for the Computer Science & Engineering department</li>
-                        <li>Implementing features for academic resource sharing and department updates</li>
-                        <li>Live site: <a href="https://bupcse.pages.dev" target="_blank">bupcse.pages.dev</a></li>
-                    </ul>
+        <section id="contact" class="contact">
+            <h2 class="aos-item">Let's Connect</h2>
+            <div class="section-content-wrapper">
+                 <p class="contact-intro aos-item">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of something amazing. Feel free to reach out!
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:refayatul@outlook.com" class="contact-item aos-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email: refayatul@outlook.com</span>
+                    </a>
+                    <a href="tel:+8801518941350" class="contact-item aos-item">
+                        <i class="fas fa-phone"></i>
+                        <span>Phone: +8801518941350</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/refayatul7" target="_blank" rel="noopener noreferrer" class="contact-item aos-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn: /in/refayatul7</span>
+                    </a>
+                    <a href="https://github.com/refayatul" target="_blank" rel="noopener noreferrer" class="contact-item aos-item">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub: /refayatul</span>
+                    </a>
+                    <a href="https://www.facebook.com/refayatul/" target="_blank" rel="noopener noreferrer" class="contact-item aos-item">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook: /refayatul</span>
+                    </a>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <!-- Salah App Development -->
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>Mobile App Developer</h3>
-                    <h4>Salah - Islamic Prayer App</h4>
-                    <p class="date">2024 – Present</p>
-                    <ul>
-                        <li>Leading the development of a Flutter-based mobile application for teaching Islamic prayer practices</li>
-                        <li>Implementing user-friendly interfaces and educational content delivery</li>
-                        <li>GitHub: <a href="https://github.com/Refayatul/salah" target="_blank">github.com/Refayatul/salah</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Bulletin Bitz -->
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>Lead Editor & Web Developer</h4>
-                    <h4>thebulletinbitz.com</h4>
-                    <p class="date">2022 – Present</p>
-                    <ul>
-                        <li>Manage editorial content and direction for the website, focusing on articles about latest technology trends and developments</li>
-                        <li>Develop, maintain, and update the website's functionality and appearance using relevant web technologies</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <h3 class="volunteer-heading">Volunteer Experience</h3>
-        <div class="volunteer-grid">
-            <div class="volunteer-item">
-                <h4>Poriborton (Social Needs Support)</h4>
-                <p class="date">2022 – Present</p>
-                <p>Assisting in organizing community outreach programs and providing logistical support for aid distribution.</p>
-            </div>
-            <div class="volunteer-item">
-                <h4>Student Welfare and Social Development Association</h4>
-                <p class="date">2021 – Present</p>
-                <p>Collaborating on projects for student welfare and community development in Munshigonj.</p>
-            </div>
-            <div class="volunteer-item">
-                <h4>Munshigonj Blood Donation</h4>
-                <p class="date">2019 – Present</p>
-                <p>Organizing blood donation camps and raising awareness about blood donation.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <h2>Education</h2>
-        <div class="education-grid">
-            <div class="education-item">
-                <h3>B.Sc. in Computer Science & Engineering</h3>
-                <div class="institution">Bangladesh University of Professionals (BUP)</div>
-                <div class="year">2021 - Present</div>
-                <div class="location">Dhaka, Bangladesh</div>
-            </div>
-            <div class="education-item">
-                <h3>Higher Secondary Certificate (HSC)</h3>
-                <div class="institution">Chuadanga Government College</div>
-                <div class="year">2019- 2021</div>
-                <div class="location">Chuadanga, Bangladesh</div>
-            </div>
-            <div class="education-item">
-                <h3>Secondary School Certificate (SSC)</h3>
-                <div class="institution">Victoria Jubilee Government High School</div>
-                <div class="year">2013 - 2018</div>
-                <div class="location">Chuadanga, Bangladesh</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Get in Touch</h2>
-        <div class="contact-links">
-            <a href="https://www.facebook.com/refayatul/" target="_blank" class="contact-item">
-                <i class="fab fa-facebook"></i>
-                <span>Facebook</span>
-            </a>
-            <div class="contact-item">
-                <i class="fab fa-github"></i>
-                <a href="https://github.com/refayatul" target="_blank">GitHub</a>
-            </div>
-            <div class="contact-item">
-                <i class="fab fa-linkedin"></i>
-                <a href="https://linkedin.com/in/refayatul7" target="_blank">LinkedIn</a>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:refayatul@outlook.com">refayatul@outlook.com</a>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+8801518941350">+88015189413xx</a>
-            </div>
-        </div>
-    </section>
-
-    <style>
-    .contact-links {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        margin: 30px 0;
-    }
-
-    .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 15px;
-        background: #f8f9fa;
-        border-radius: 8px;
-        text-decoration: none;
-        color: #333;
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .contact-item:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    .contact-item i {
-        font-size: 24px;
-        color: #0066cc;
-    }
-    </style>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2024 Md Refayatul Islam. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://github.com/refayatul" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/refayatul7" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://refayatul.pages.dev" target="_blank"><i class="fas fa-globe"></i></a>
+            <div class="footer-social-links">
+                <a href="https://github.com/refayatul" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/refayatul7" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://refayatul.pages.dev" target="_blank" rel="noopener noreferrer" aria-label="Portfolio"><i class="fas fa-globe"></i></a>
+                 <a href="mailto:refayatul@outlook.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
+            <p>© <span id="currentYear">2024</span> Md Refayatul Islam. All rights reserved.</p>
+            <p class="made-with">Crafted with <i class="fas fa-heart"></i> and code.</p>
         </div>
     </footer>
+
+    <button class="scroll-top-btn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="js/main.js"></script>
 </body>

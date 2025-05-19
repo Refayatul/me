@@ -1,252 +1,295 @@
-// Initialize UI Elements
-const typewriterElement = document.getElementById('typewriter');
-const progressBar = document.querySelector('.progress-bar');
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.querySelector('.nav-links');
-const navbar = document.querySelector('.navbar');
+document.addEventListener('DOMContentLoaded', () => {
+    // --- UI Elements ---
+    const typewriterElement = document.getElementById('typewriter');
+    const progressBar = document.querySelector('.progress-bar');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.querySelector('.nav-links');
+    const allNavLinks = document.querySelectorAll('.nav-links .nav-link'); // Specific for nav items
+    const navbar = document.querySelector('.navbar');
+    const html = document.documentElement;
 
-// Theme related elements
-const themeToggle = document.getElementById('themeToggle');
-const html = document.documentElement;
-const themeIcon = themeToggle?.querySelector('i');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-const savedTheme = localStorage.getItem('theme');
+    // --- Theme Toggle ---
+    const themeToggle = document.getElementById('themeToggle'); 
+    const themeIcon = themeToggle?.querySelector('i');
 
-// Intersection Observer Setup for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const animationObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            animationObserver.unobserve(entry.target);
+    function updateThemeIcon(isDark) {
+        if (themeIcon) {
+            themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
         }
-    });
-}, observerOptions);
-
-// Project Filtering Elements
-const filterButtons = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
-
-// Mobile Navigation
-if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        navToggle.classList.toggle('active');
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
-            navLinks.classList.remove('active');
-            navToggle.classList.remove('active');
-        }
-    });
-}
-
-// Scroll to Top Button
-const scrollButton = document.createElement('button');
-scrollButton.innerHTML = '↑';
-scrollButton.className = 'scroll-top';
-document.body.appendChild(scrollButton);
-
-const scrollButtonStyles = document.createElement('style');
-scrollButtonStyles.textContent = `
-    .scroll-top {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: var(--primary-color);
-        color: white;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        border: none;
-        cursor: pointer;
-        display: none;
-        font-size: 20px;
-        transition: var(--transition);
-        z-index: 1000;
-    }
-    .scroll-top:hover {
-        transform: translateY(-5px);
-    }
-`;
-document.head.appendChild(scrollButtonStyles);
-
-// Theme Toggle Function
-function updateThemeIcon(isDark) {
-    if (themeIcon) {
-        themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-    }
-}
-
-// Theme Toggle Setup
-if (themeToggle) {
-    if (savedTheme) {
-        html.dataset.theme = savedTheme;
-        updateThemeIcon(savedTheme === 'dark');
-    } else if (prefersDark) {
-        html.dataset.theme = 'dark';
-        updateThemeIcon(true);
     }
 
-    themeToggle.addEventListener('click', () => {
-        const isDark = html.dataset.theme === 'dark';
-        html.dataset.theme = isDark ? 'light' : 'dark';
-        localStorage.setItem('theme', html.dataset.theme);
-        updateThemeIcon(!isDark);
+    function applyTheme(theme) {
+        html.dataset.theme = theme;
+        localStorage.setItem('theme', theme);
+        updateThemeIcon(theme === 'dark');
+    }
+
+    if (themeToggle) {
+        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        applyTheme(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.dataset.theme;
+            applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+    }
+
+    // --- Intersection Observer for Animations ---
+    const observerOptions = {
+        threshold: 0.1, 
+        rootMargin: '0px 0px -50px 0px' 
+    };
+
+    const animationObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // We removed data-aos-delay for simplicity, relying on CSS for any staggering if needed
+                // or can be added back if complex JS-driven staggering is desired.
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.aos-item').forEach(item => {
+        animationObserver.observe(item);
     });
 
-    // Watch for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-            html.dataset.theme = e.matches ? 'dark' : 'light';
-            updateThemeIcon(e.matches);
-        }
-    });
-}
+    // --- Mobile Navigation ---
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            navLinks.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
 
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const headerOffset = 80;
-            const elementPosition = target.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
+        navLinks.querySelectorAll('a.nav-link').forEach(link => { // Target only actual nav links
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
             });
+        });
 
-            // Close mobile menu if open
-            if (navLinks && navToggle) {
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && 
+                !navToggle.contains(e.target) && 
+                !navLinks.contains(e.target)) {
                 navLinks.classList.remove('active');
                 navToggle.classList.remove('active');
             }
-        }
-    });
-});
+        });
+    }
 
-// Scroll Events
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+    // --- Scroll to Top Button ---
+    const scrollButton = document.querySelector('.scroll-top-btn');
+    if (scrollButton) {
+        scrollButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
     
-    // Navbar scroll effect
-    if (navbar) {
-        if (currentScroll <= 0) {
-            navbar.classList.remove('scroll-up');
-            return;
-        }
+    // --- Active Nav Link Highlighting & Smooth Scrolling ---
+    const sections = document.querySelectorAll('main section[id]');
+
+    function changeNavActiveState() {
+        let index = sections.length;
+        const navbarHeight = navbar ? navbar.offsetHeight : 70;
+
+        while(--index >= 0 && window.scrollY + navbarHeight + 50 < sections[index].offsetTop) {} // Ensure index doesn't go below 0
         
-        if (currentScroll > lastScroll && !navbar.classList.contains('scroll-down')) {
-            navbar.classList.remove('scroll-up');
-            navbar.classList.add('scroll-down');
-        } else if (currentScroll < lastScroll && navbar.classList.contains('scroll-down')) {
-            navbar.classList.remove('scroll-down');
-            navbar.classList.add('scroll-up');
+        allNavLinks.forEach((link) => link.classList.remove('active'));
+        
+        if (index >= 0 && sections[index]) { // Check if sections[index] exists
+            const activeLink = document.querySelector(`.nav-links a.nav-link[href="#${sections[index].id}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        } else if (window.scrollY < (sections[0] ? sections[0].offsetTop - navbarHeight - 50 : 500) && allNavLinks[0]) {
+             // If very top (or no sections yet), highlight Home
+            allNavLinks[0].classList.add('active');
         }
     }
-    
-    // Progress bar update
-    if (progressBar) {
-        const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrolled = (window.scrollY / windowHeight) * 100;
-        progressBar.style.width = `${scrolled}%`;
-    }
-    
-    // Scroll to top button visibility
-    if (currentScroll > 300) {
-        scrollButton.style.display = 'block';
-    } else {
-        scrollButton.style.display = 'none';
-    }
-    
-    lastScroll = currentScroll;
-});
+    if(sections.length > 0) changeNavActiveState(); // Initial call only if sections exist
 
-// Scroll to top when button is clicked
-scrollButton.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
 
-// Project Filtering
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => { // Includes nav-links and cta-buttons
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === "#" || href === "" || href.length < 2) return; // Basic check
 
-        const filter = button.getAttribute('data-filter');
-        
-        projectCards.forEach(card => {
-            if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                card.style.opacity = '1';
-                card.style.transform = 'scale(1)';
-                card.style.display = 'block';
-            } else {
-                card.style.opacity = '0';
-                card.style.transform = 'scale(0.8)';
-                setTimeout(() => {
-                    card.style.display = 'none';
-                }, 300);
+            const targetElement = document.querySelector(href);
+            if (targetElement) {
+                e.preventDefault();
+                const navbarHeight = navbar ? navbar.offsetHeight : 70;
+                let elementPosition = targetElement.getBoundingClientRect().top;
+                let offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+                
+                // Small adjustment to prevent title from being exactly at the edge
+                if (href !== "#home") { // Don't adjust for home, scroll to very top
+                    offsetPosition -= 10; 
+                }
+
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                if (navLinks && navLinks.classList.contains('active') && !this.closest('.nav-toggle')) {
+                    navLinks.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
             }
         });
     });
-});
 
-// Typewriter Effect
-function typeWriter(text, speed = 100) {
-    if (!typewriterElement) return;
-    
-    let i = 0;
-    typewriterElement.textContent = '';
-    
-    function type() {
-        if (i < text.length) {
-            typewriterElement.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
+    // --- Scroll Events Listener ---
+    let lastScrollY = window.pageYOffset;
+    const SCROLL_THRESHOLD_NAVBAR = 10;
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.pageYOffset;
+        const scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
+        const scrolledAmount = Math.abs(currentScrollY - lastScrollY);
+
+        if (navbar) {
+            if (currentScrollY <= 60) { 
+                navbar.classList.remove('scrolled', 'navbar-hidden');
+            } else {
+                navbar.classList.add('scrolled');
+                if (scrolledAmount > SCROLL_THRESHOLD_NAVBAR) {
+                    if (scrollDirection === 'down' && currentScrollY > navbar.offsetHeight + 50) { 
+                        navbar.classList.add('navbar-hidden');
+                    } else {
+                        navbar.classList.remove('navbar-hidden');
+                    }
+                }
+            }
         }
+        
+        if (progressBar) {
+            const documentHeight = Math.max(
+                document.body.scrollHeight, document.documentElement.scrollHeight,
+                document.body.offsetHeight, document.documentElement.offsetHeight,
+                document.body.clientHeight, document.documentElement.clientHeight
+            ) - window.innerHeight;
+            const scrolledPercentage = documentHeight > 0 ? (window.pageYOffset / documentHeight) * 100 : 0;
+            progressBar.style.width = `${Math.min(scrolledPercentage, 100)}%`; // Cap at 100%
+        }
+        
+        if (scrollButton) {
+            scrollButton.classList.toggle('visible', currentScrollY > 350); // Slightly higher threshold
+        }
+
+        if(sections.length > 0) changeNavActiveState();
+        
+        lastScrollY = currentScrollY < 0 ? 0 : currentScrollY;
+    }, { passive: true });
+
+    // --- Project Filtering ---
+    const filterButtons = document.querySelectorAll('.projects-filter .filter-btn');
+    const projectCards = document.querySelectorAll('.projects-grid .project-card');
+
+    if (filterButtons.length > 0 && projectCards.length > 0) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                const filterValue = button.dataset.filter;
+
+                projectCards.forEach(card => {
+                    const cardCategory = card.dataset.category;
+                    const matchesFilter = filterValue === 'all' || cardCategory === filterValue;
+                    
+                    if (matchesFilter) {
+                        card.style.display = 'flex'; 
+                        void card.offsetWidth; // Force reflow
+                        card.classList.remove('hide');
+                        // For simplified animation, .is-visible is added by observer.
+                        // If cards are already observed, we might just ensure opacity/transform are correct.
+                        // Or, if filtering re-triggers entry, observer handles it.
+                        // For now, let's assume observer will pick them up or CSS handles initial state.
+                        card.style.opacity = ''; // Let CSS handle visible state
+                        card.style.transform = '';
+                    } else {
+                        card.classList.add('hide');
+                        // Setting display to none after CSS transition completes
+                        card.addEventListener('transitionend', function handleTransitionEnd() {
+                            if (card.classList.contains('hide')) { // Double check
+                               card.style.display = 'none';
+                            }
+                            card.removeEventListener('transitionend', handleTransitionEnd);
+                        }, {once: true}); // Ensure listener is removed
+                    }
+                });
+            });
+        });
+    }
+
+    // --- Typewriter Effect ---
+    function typeWriter(element, text, speed = 65, callback) { // Faster typing
+        if (!element) return;
+        
+        let i = 0;
+        let currentTextNode = element.firstChild && element.firstChild.nodeType === Node.TEXT_NODE ? element.firstChild : document.createTextNode('');
+        if (!element.firstChild || element.firstChild.nodeType !== Node.TEXT_NODE) {
+            element.insertBefore(currentTextNode, element.firstChild); // Ensure text node is first
+        }
+        
+        let cursorSpan = element.querySelector('.typewriter-cursor');
+        if (!cursorSpan) {
+            cursorSpan = document.createElement('span');
+            cursorSpan.className = 'typewriter-cursor';
+            cursorSpan.innerHTML = '|';
+            element.appendChild(cursorSpan);
+        }
+        currentTextNode.textContent = ''; // Clear only text node
+
+        function type() {
+            if (i < text.length) {
+                currentTextNode.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                if (cursorSpan) cursorSpan.style.animationPlayState = 'paused'; 
+                setTimeout(() => { 
+                    if (cursorSpan) cursorSpan.style.animationPlayState = 'running';
+                    if (callback) callback();
+                }, 800); // Pause before callback
+            }
+        }
+        if (cursorSpan) cursorSpan.style.animationPlayState = 'running';
+        type();
     }
     
-    type();
-}
+    if (typewriterElement) {
+        const phrases = typewriterElement.dataset.phrases ? JSON.parse(typewriterElement.dataset.phrases) : [typewriterElement.textContent.trim() || "Innovative Developer"];
+        let currentPhraseIndex = 0;
+        typewriterElement.textContent = ''; // Clear static text
 
-if (typewriterElement) {
-    const text = typewriterElement.textContent;
-    setTimeout(() => {
-        typeWriter(text);
-    }, 1000);
-}
-
-// Initialize animations
-document.querySelectorAll('section, .project-card, .skill-category, .timeline-item, .volunteer-item')
-    .forEach(element => {
-        element.classList.add('fade-in');
-        animationObserver.observe(element);
-    });
-
-// Add animation styles
-const animationStyles = document.createElement('style');
-animationStyles.textContent = `
-    .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        function typeLoop() {
+            typeWriter(typewriterElement, phrases[currentPhraseIndex], 65, () => {
+                setTimeout(() => {
+                    currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                    typeLoop();
+                }, 2200); // Wait before typing next phrase
+            });
+        }
+        
+        setTimeout(typeLoop, 800); // Initial delay
     }
-    .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
+
+    // --- Update Footer Year ---
+    const currentYearSpan = document.getElementById('currentYear');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
     }
-`;
-document.head.appendChild(animationStyles);
+});
